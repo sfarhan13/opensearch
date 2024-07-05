@@ -1,0 +1,42 @@
+OpenSearch Installation 2.15 version in Ubuntu 22.04
+
+Create Opensearch Directory for Download and Installation
+
+mkdir opensearch
+chmod 777 opensearch
+ls -ll
+cd opensearch
+
+OpenSearch requires Java to be installed and properly configured. Verify that Java is installed and the JAVA_HOME environment variable is set correctly:
+
+Verify Java Installation
+
+java -version
+echo $JAVA_HOME
+
+If Java is not installed, you can install it using:
+
+sudo apt install openjdk-11-jdk
+
+Then, set the JAVA_HOME variable:
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+Get OpenSearch Repository
+
+wget https://artifacts.opensearch.org/releases/bundle/opensearch/2.15.0/opensearch-2.15.0-linux-x64.deb
+
+It is mandatory to set the password for latest OpenSearch Versions:
+
+sudo env OPENSEARCH_INITIAL_ADMIN_PASSWORD=Opfer94505Fw* dpkg -i opensearch-2.15.0-linux-x64.deb
+
+To Enable Opensearch on start
+
+sudo systemctl enable opensearch
+
+Start OpenSearch Service
+sudo systemctl start opensearch
+
+Check OpenSearch Service
+
+sudo systemctl status opensearch
